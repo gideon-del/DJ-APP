@@ -23,9 +23,7 @@ const Signup = () => {
     const res = await getRedirectResult(auth);
     console.log(res?.user);
   };
-  useEffect(() => {
-    getRedirectResult(auth).then((result) => console.log(result?.user));
-  }, []);
+
   return (
     <div className="signup">
       <Card>
