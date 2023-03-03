@@ -12,20 +12,20 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/config";
 
-const propvider = new GoogleAuthProvider();
 const Signup = () => {
   const [login, setLogin] = useState(false);
   const toggleLogin = () => {
     setLogin((prev) => !prev);
   };
   const signInWithGoogle = async () => {
+    const propvider = new GoogleAuthProvider();
     await signInWithRedirect(auth, propvider);
     const res = await getRedirectResult(auth);
     console.log(res?.user);
   };
-  useEffect(() => {
-    getRedirectResult(auth).then((result) => console.log(result?.user));
-  }, []);
+  // useEffect(() => {
+  //   getRedirectResult(auth).then((result) => console.log(result?.user));
+  // }, []);
   return (
     <div className="signup">
       <Card>
