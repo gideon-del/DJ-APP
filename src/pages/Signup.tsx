@@ -8,6 +8,7 @@ import google from "../assets/google.svg";
 import {
   getRedirectResult,
   GoogleAuthProvider,
+  signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../firebase/config";
@@ -17,15 +18,10 @@ const Signup = () => {
   const toggleLogin = () => {
     setLogin((prev) => !prev);
   };
-  // const signInWithGoogle = useCallback(async () => {
-  //   const propvider = new GoogleAuthProvider();
-  //   await signInWithRedirect(auth, propvider);
-  //   const res = await getRedirectResult(auth);
-  //   console.log(res?.user);
-  // }, []);
-  // useEffect(() => {
-  //   getRedirectResult(auth).then((result) => console.log(result?.user));
-  // }, []);
+  const signInWithGoogle = useCallback(async () => {
+    const propvider = new GoogleAuthProvider();
+    const res = await signInWithPopup(auth, propvider);
+  }, []);
   return (
     <div className="signup">
       <Card>
@@ -35,7 +31,7 @@ const Signup = () => {
         {login ? <SigninForm /> : <SignupForm />}
         <p className="text-center">OR</p>
 
-        <Button color="transparent">
+        <Button color="transparent" onClick={signInWithGoogle}>
           <div className="flex gap-3 items-center justify-center font-semibold text-primaryBlack">
             <img src={google} width={30} height={30} alt="Google" />
             <span>{login ? "Log In" : "Sign up"} with Google</span>
