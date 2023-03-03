@@ -69,13 +69,6 @@ const SigninForm = () => {
           Log in
         </button>
       </form>
-      <p className="text-center">OR</p>
-      <Button color="transparent">
-        <div className="flex gap-3 items-center justify-center font-semibold text-primaryBlack">
-          <img src={google} width={30} height={30} alt="Google" />
-          <span>Log in with Google</span>
-        </div>
-      </Button>
     </>
   );
 };
