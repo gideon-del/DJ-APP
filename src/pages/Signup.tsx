@@ -2,7 +2,7 @@ import Card from "../UI/Card";
 import logo from "../assets/logo.svg";
 import SignupForm from "../components/SignupForm";
 import SigninForm from "../components/SigninForm";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Button from "../UI/Button";
 import google from "../assets/google.svg";
 import {
@@ -17,12 +17,12 @@ const Signup = () => {
   const toggleLogin = () => {
     setLogin((prev) => !prev);
   };
-  const signInWithGoogle = async () => {
-    const propvider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, propvider);
-    const res = await getRedirectResult(auth);
-    console.log(res?.user);
-  };
+  // const signInWithGoogle = useCallback(async () => {
+  //   const propvider = new GoogleAuthProvider();
+  //   await signInWithRedirect(auth, propvider);
+  //   const res = await getRedirectResult(auth);
+  //   console.log(res?.user);
+  // }, []);
   // useEffect(() => {
   //   getRedirectResult(auth).then((result) => console.log(result?.user));
   // }, []);
@@ -35,7 +35,7 @@ const Signup = () => {
         {login ? <SigninForm /> : <SignupForm />}
         <p className="text-center">OR</p>
 
-        <Button color="transparent" onClick={signInWithGoogle}>
+        <Button color="transparent">
           <div className="flex gap-3 items-center justify-center font-semibold text-primaryBlack">
             <img src={google} width={30} height={30} alt="Google" />
             <span>{login ? "Log In" : "Sign up"} with Google</span>
