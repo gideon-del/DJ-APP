@@ -18,7 +18,6 @@ export const checkValidation = <U extends keyof Singup | keyof SignIn>(
         if (arr[i] !== arr[i - 1]) return item;
         return;
       });
-    console.log(notInputed);
     throw new Error(`Please Fill The ${notInputed.join(" and ")} inputs`);
   }
   if (requiredVal.filter((key) => !entries[key]).length > 0) {

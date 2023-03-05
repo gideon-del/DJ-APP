@@ -1,3 +1,5 @@
+import { UserInfo } from "firebase/auth";
+
 type Singup = {
   email: string;
   password: string;
@@ -10,4 +12,12 @@ type SignIn = {
   password: string;
 };
 
-export type { Singup, SignIn };
+interface Auth {
+  user: UserInfo | null;
+  error?: {
+    message: string;
+    isError: boolean;
+  };
+  isAuthenticating: boolean;
+}
+export type { Singup, SignIn, Auth };

@@ -5,22 +5,26 @@ import SigninForm from "../components/SigninForm";
 import { useCallback, useEffect, useState } from "react";
 import Button from "../UI/Button";
 import google from "../assets/google.svg";
-import {
-  getRedirectResult,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
-import { auth } from "../firebase/config";
-
-const Signup = () => {
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth, db } from "../firebase/config";
+import { useDispatch } from "react-redux";
+import { successfull } from "../store/authSlice";
+// import { doc, getDoc, setDoc } from "firebase/firestore";
+const Auth = () => {
   const [login, setLogin] = useState(false);
+  const dispatch = useDispatch();
   const toggleLogin = () => {
     setLogin((prev) => !prev);
   };
   const signInWithGoogle = useCallback(async () => {
     const propvider = new GoogleAuthProvider();
     const res = await signInWithPopup(auth, propvider);
+    console.log(res);
+    dispatch(
+      successfull({
+        user: res.user,
+      })
+    );
   }, []);
   return (
     <div className="signup">
@@ -52,4 +56,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Auth;
