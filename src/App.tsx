@@ -2,7 +2,8 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase/config";
-import Signup from "./pages/Auth";
+import Auth from "./pages/Auth";
+import DJ from "./pages/DJ";
 import User from "./pages/User";
 import { successfull } from "./store/authSlice";
 
@@ -37,7 +38,7 @@ function App() {
   //     }
   //   };
   // });
-  return <User />;
+  return <DJ />;
 }
 
 export default App;

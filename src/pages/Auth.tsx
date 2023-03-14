@@ -5,7 +5,6 @@ import SigninForm from "../components/SigninForm";
 import { useCallback, useEffect, useState } from "react";
 import Button from "../UI/Button";
 import google from "../assets/google.svg";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../firebase/config";
 import { useDispatch } from "react-redux";
 import { successfull } from "../store/authSlice";
@@ -16,16 +15,7 @@ const Auth = () => {
   const toggleLogin = () => {
     setLogin((prev) => !prev);
   };
-  const signInWithGoogle = useCallback(async () => {
-    const propvider = new GoogleAuthProvider();
-    const res = await signInWithPopup(auth, propvider);
-    console.log(res);
-    dispatch(
-      successfull({
-        user: res.user,
-      })
-    );
-  }, []);
+
   return (
     <div className="signup">
       <Card>
@@ -35,12 +25,6 @@ const Auth = () => {
         {login ? <SigninForm /> : <SignupForm />}
         <p className="text-center">OR</p>
 
-        <Button color="transparent" onClick={signInWithGoogle}>
-          <div className="flex gap-3 items-center justify-center font-semibold text-primaryBlack">
-            <img src={google} width={30} height={30} alt="Google" />
-            <span>{login ? "Log In" : "Sign up"} with Google</span>
-          </div>
-        </Button>
         <p
           className="cursor-pointer text-center text-secondaryBlack font-bold"
           onClick={toggleLogin}

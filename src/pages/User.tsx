@@ -61,72 +61,74 @@ const User = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <main className="userpage">
-        <header className="p-7 text-2xl flex flex-col justify-center gap-16 h-screen md:sticky left-0  fixed inset-y-0 -translate-x-full md:translate-x-0  md:bg-transparent bg-black z-40 ">
-          <div className="cursor-pointer">
-            <BiUser />
-          </div>
-          <nav className="">
-            <ul className="flex flex-col gap-5 items-start">
-              <ClubRoom />
-              <ClubRoom />
-              <ClubRoom />
-              <ClubRoom />
-            </ul>
-          </nav>
-          <div
-            className="text-red-500 text-2xl cursor-pointer"
-            onClick={() => dispatch(logout())}
-          >
-            {" "}
-            <ImExit />{" "}
-          </div>
-        </header>
-        <section className="py-7 w-full">
-          <form className="flex items-center mb-3 max-w-2xl mx-auto md:mx-0">
-            <div className="text-gray text-lg -mr-7 ">
-              <FiSearch />
+      <main className="bg-black">
+        <div className="userpage mx-auto max-w-[1440px]">
+          <header className="p-7 text-2xl flex flex-col justify-center gap-16 h-screen md:sticky left-0  fixed inset-y-0 -translate-x-full md:translate-x-0  md:bg-transparent bg-black z-40 ">
+            <div className="cursor-pointer">
+              <BiUser />
             </div>
-            <input
-              type="text"
-              className="w-full rounded-full bg-transparent px-8 py-2 border border-gray   focus-visible:outline-none focus-visible:border"
-              placeholder="Search music"
-            />
-          </form>
-          <div className="music-container">
-            <div className="flex flex-col gap-5">
-              <h1 className="text-2xl font-bold uppercase">Request Songs</h1>
-              <div className="   gap-10 grid playlist  ">
-                <RequestSongs />
-                <RequestSongs />
-                <RequestSongs />
-                <RequestSongs />
-                <RequestSongs />
-                <RequestSongs />
-                <RequestSongs />
+            <nav className="">
+              <ul className="flex flex-col gap-5 items-start">
+                <ClubRoom />
+                <ClubRoom />
+                <ClubRoom />
+                <ClubRoom />
+              </ul>
+            </nav>
+            <div
+              className="text-red-500 text-2xl cursor-pointer"
+              onClick={() => dispatch(logout())}
+            >
+              {" "}
+              <ImExit />{" "}
+            </div>
+          </header>
+          <section className="py-7 w-full">
+            <form className="flex items-center mb-3 max-w-2xl mx-auto md:mx-0">
+              <div className="text-gray text-lg -mr-7 ">
+                <FiSearch />
+              </div>
+              <input
+                type="text"
+                className="w-full rounded-full bg-transparent px-8 py-2 border border-gray   focus-visible:outline-none focus-visible:border"
+                placeholder="Search music"
+              />
+            </form>
+            <div className="music-container">
+              <div className="flex flex-col gap-5">
+                <h1 className="text-2xl font-bold uppercase">Request Songs</h1>
+                <div className="   gap-10 grid playlist  ">
+                  <RequestSongs />
+                  <RequestSongs />
+                  <RequestSongs />
+                  <RequestSongs />
+                  <RequestSongs />
+                  <RequestSongs />
+                  <RequestSongs />
+                </div>
+              </div>
+              <div className="md:pr-7 md:w-fit w-full flex flex-col px-6 mx-auto">
+                <div className="mb-3 self-center ">
+                  <h2 className="uppercase font-bold text-2xl">Now Playing</h2>
+                  <img
+                    src={album}
+                    alt="album"
+                    width={300}
+                    className="aspect-square rounded-lg"
+                  />
+                  <p className="text-lg text-gray">Starboy by The Weekend</p>
+                </div>
+                <div className="playlist gap-10">
+                  <Playlist />
+                  <Playlist />
+                  <Playlist />
+                  <Playlist />
+                  <Playlist />
+                </div>
               </div>
             </div>
-            <div className="md:pr-7 md:w-fit w-full flex flex-col px-6 mx-auto">
-              <div className="mb-3 self-center ">
-                <h2 className="uppercase font-bold text-2xl">Now Playing</h2>
-                <img
-                  src={album}
-                  alt="album"
-                  width={300}
-                  className="aspect-square rounded-lg"
-                />
-                <p className="text-lg text-gray">Starboy by The Weekend</p>
-              </div>
-              <div className="playlist gap-10">
-                <Playlist />
-                <Playlist />
-                <Playlist />
-                <Playlist />
-                <Playlist />
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
     </>
   );
